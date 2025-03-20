@@ -166,3 +166,5 @@ C:\Users\AHMED\Desktop\LVL_4\Graduation Project\Lost-and-Found\obj\Debug\net8.0\
 C:\Users\AHMED\Desktop\LVL_4\Graduation Project\Lost-and-Found\obj\Debug\net8.0\Lost-and-Found.pdb
 C:\Users\AHMED\Desktop\LVL_4\Graduation Project\Lost-and-Found\obj\Debug\net8.0\Lost-and-Found.genruntimeconfig.cache
 C:\Users\AHMED\Desktop\LVL_4\Graduation Project\Lost-and-Found\obj\Debug\net8.0\ref\Lost-and-Found.dll
+C:\Users\AHMED\Desktop\LVL_4\Graduation Project\Lost-and-Found\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\AHMED\Desktop\LVL_4\Graduation Project\Lost-and-Found\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
