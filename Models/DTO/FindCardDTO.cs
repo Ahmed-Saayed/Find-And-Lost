@@ -1,10 +1,9 @@
-﻿namespace Lost_and_Found.Models.Entites
+﻿namespace Lost_and_Found.Models.DTO
 {
-    public class FindCard
+    public class FindCardDTO
     {
-        public int Id { get; set; }
         public string CardID { get; set; }
-        public byte[]? CardPhoto { get; set; }
+        public IFormFile? CardPhoto { get; set; }
         public string Government { get; set; }
         public string Center { get; set; }
         public string Street { get; set; }

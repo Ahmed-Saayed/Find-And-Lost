@@ -6,8 +6,8 @@ namespace Lost_and_Found.Interfaces
     public interface IFindPhoneService
     {
         List<FindPhone> GetFoundedPhones();
-        FindPhone GetFoundedPhoneOfNumber(string number);
-        FindPhone AddFoundedPhone(PhoneDTO lostPhone);
+        FindPhone AddFoundedPhone(FindPhoneDTO lostPhone);
+        FindPhone UpdateFoundedPhone(FindPhoneDTO los);
         string DeleteFoundedPhone(string phonenum);
     }
 }

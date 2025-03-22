@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Lost_and_Found.Interfaces;
 using Lost_and_Found.Models.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,51 +13,63 @@ namespace Lost_and_Found.Controllers
     {
         private readonly ILostPhoneService lost_PhoneService;
         private readonly IMapper mp;
-        public Lost_PhoneController(ILostPhoneService lost_PhoneService,IMapper mp)
+        public Lost_PhoneController(ILostPhoneService lost_PhoneService, IMapper mp)
         {
             this.lost_PhoneService = lost_PhoneService;
             this.mp = mp;
         }
 
+        [Authorize(Roles = "Manager")]
         [HttpGet("Get All Losted Phones")]
         public IActionResult Get()
         {
             var lost_Phones = lost_PhoneService.GetLostPhones();
-            var ret= mp.Map<List<PhoneDTO>>(lost_Phones);
-            
+            var ret = mp.Map<List<LostPhoneDTO>>(lost_Phones);
+
             return Ok(ret);
         }
 
+        [Authorize(Roles = "Manager")]
         [HttpGet("Get Losted Phones By Email")]
-        public IActionResult Get([FromBody]string email)
+        public IActionResult Getbyemail([FromQuery]string email)
         {
             var lost_Phones = lost_PhoneService.GetLostPhonesOfID(email);
             if (lost_Phones == null)
                 return BadRequest("No Losted Phones Found");
 
-            var ret = mp.Map<List<PhoneDTO>>(lost_Phones);
-
-            return Ok(ret);
+            return Ok(lost_Phones);
         }
 
         [HttpPost("Add Losted Phone")]
-        public IActionResult Post([FromForm] PhoneDTO lostPhoneDTO)
+        public IActionResult Post([FromForm] LostPhoneDTO lostPhoneDTO)
         {
             var lostPhone = lost_PhoneService.AddLostPhone(lostPhoneDTO);
             if (lostPhone == null)
                 return BadRequest("Phone Number Already Exists");
 
-            var ret=mp.Map<PhoneDTO>(lostPhone);
-            ret.UserEmail = lostPhone.ForiegnKey_UserEmail;
+            var ret=mp.Map<LostPhoneDTO>(lostPhone);
             return Ok(ret);
         }
 
+        [Authorize(Roles = "Manager")]
+        [HttpPut("Update Losted Phone")]
+        public IActionResult Update([FromForm] LostPhoneDTO lostPhoneDTO)
+        {
+            var lostPhone = lost_PhoneService.UpdateLostPhone(lostPhoneDTO);
+            if (lostPhone == null)
+                return BadRequest("Phone Number do not Exists");
+
+            var ret = mp.Map<LostPhoneDTO>(lostPhone);
+            return Ok(ret);
+        }
+
+        [Authorize(Roles = "Manager")]
         [HttpDelete("Delete Lost Phone")]
-        public IActionResult Delete([FromBody] string email,string phonenum)
+        public IActionResult Delete([FromForm] string email,[FromForm]string phonenum)
         {
             var ret = lost_PhoneService.DeleteLostPhone(email, phonenum);
             if (ret == null)
-                return BadRequest("Phone Number Not Found");
+                return BadRequest("Phone Number or Email Not Found");
 
             return Ok(ret);
         }

@@ -14,6 +14,8 @@ namespace Lost_and_Found.Models
         public DbSet<LostPhone> LostPhones { get; set; }
         public DbSet<FindCard> FindCards { get; set; }
         public DbSet<FindPhone> FindPhones { get; set; }
+        public DbSet<Manager> Managers { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder op)
         {

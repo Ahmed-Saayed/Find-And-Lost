@@ -25,7 +25,7 @@ namespace Lost_and_Found.Services
         {
             return con.LostCards.Where(o => o.ForiegnKey_UserEmail == email).Select(o => o.CardID).ToList();
         }
-        public LostCard AddLostCard(CardsDTO lostCardDTO)
+        public LostCard AddLostCard(LostCardsDTO lostCardDTO)
         {
             if (con.LostCards.FirstOrDefault(o => o.CardID == lostCardDTO.CardID) != null)
                 return null;
@@ -33,14 +33,43 @@ namespace Lost_and_Found.Services
             /*
             using var stream = new MemoryStream();
             lostCardDTO.CardPhoto.CopyTo(stream);
-            */
+            
             var lostcard = mp.Map<LostCard>(lostCardDTO);
 
             //lostcard.CardPhoto=stream.ToArray();
+            */
+
+            LostCard lostcard = new()
+            {
+                CardID = lostCardDTO.CardID,
+                Street = lostCardDTO.Street,
+                Center = lostCardDTO.Center,
+                Government = lostCardDTO.Government,
+                ForiegnKey_UserEmail = lostCardDTO.ForiegnKey_UserEmail
+            };
+
             con.LostCards.Add(lostcard);
             con.SaveChanges();
 
             return lostcard;
+        }
+
+        public LostCard UpdateLostCard(LostCardsDTO card)
+        {
+            if (con.LostCards.FirstOrDefault(o => o.CardID == card.CardID) == null)
+                return null;
+
+            LostCard card1 = con.LostCards.FirstOrDefault(o => o.CardID == card.CardID);
+
+            card1.CardID = card.CardID;
+            card1.Street = card.Street;
+            card1.Center = card.Center;
+            card1.Government = card.Government;
+
+            con.LostCards.Update(card1);
+            con.SaveChanges();
+
+            return card1;
         }
 
         public string DeleteLostCard(string email, string cardid)

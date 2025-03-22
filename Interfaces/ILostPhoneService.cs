@@ -7,7 +7,8 @@ namespace Lost_and_Found.Interfaces
     {
         List<LostPhone> GetLostPhones();
         List<string> GetLostPhonesOfID(string email);
-        LostPhone AddLostPhone(PhoneDTO lostPhone);
+        LostPhone AddLostPhone(LostPhoneDTO lostPhone);
+        LostPhone UpdateLostPhone(LostPhoneDTO ph);
         string DeleteLostPhone(string email, string phonenum);
     }
 }

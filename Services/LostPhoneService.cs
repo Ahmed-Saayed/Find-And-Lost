@@ -25,7 +25,7 @@ namespace Lost_and_Found.Services
         {
             return con.LostPhones.Where(o => o.ForiegnKey_UserEmail == email).Select(o => o.PhoneNumber).ToList();
         }
-        public LostPhone AddLostPhone(PhoneDTO lostPhoneDTO)
+        public LostPhone AddLostPhone(LostPhoneDTO lostPhoneDTO)
         {
             if (con.LostPhones.FirstOrDefault(o => o.PhoneNumber == lostPhoneDTO.PhoneNumber) != null)
                 return null;
@@ -36,15 +36,37 @@ namespace Lost_and_Found.Services
             LostPhone lostphone = new()
             {
                 PhoneNumber = lostPhoneDTO.PhoneNumber,
-                ForiegnKey_UserEmail = lostPhoneDTO.UserEmail,
+                ForiegnKey_UserEmail = lostPhoneDTO.ForiegnKey_UserEmail,
                 //PhonePhoto = lostPhoneDTO.PhonePhoto
-                Location = lostPhoneDTO.Location
+                Color = lostPhoneDTO.Color,
+                Brand = lostPhoneDTO.Brand,
+                Center = lostPhoneDTO.Center,
+                Government = lostPhoneDTO.Government,
+                Street = lostPhoneDTO.Street,
             };
 
             con.LostPhones.Add(lostphone);
             con.SaveChanges();
 
             return lostphone;
+        }
+        public LostPhone UpdateLostPhone(LostPhoneDTO phone)
+        {
+            if (con.LostPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber) == null)
+                return null;
+
+            LostPhone phone1 = con.LostPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber);
+
+            phone1.PhoneNumber = phone.PhoneNumber;
+            phone1.Color = phone.Color;
+            phone1.Brand = phone.Brand;
+            phone1.Street = phone.Street;
+            phone1.Government = phone.Government;
+            phone1.Center = phone.Center;
+
+            con.LostPhones.Update(phone1);
+            con.SaveChanges();
+            return phone1;
         }
 
         public string DeleteLostPhone(string email,string phonenum)

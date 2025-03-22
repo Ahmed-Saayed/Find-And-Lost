@@ -6,8 +6,8 @@ namespace Lost_and_Found.Interfaces
     public interface IFindCardService
     {
         List<FindCard> GetFoundedCards();
-        FindCard GetFoundedCardOfID(string cardid);
-        FindCard AddFoundedCard(CardsDTO card);
+        FindCard AddFoundedCard(FindCardDTO card);
+        FindCard UpdateFoundedCard(FindCardDTO card);
         string DeleteFoundedCard(string cardid);
     }
 }

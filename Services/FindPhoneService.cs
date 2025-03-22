@@ -21,22 +21,39 @@ namespace Lost_and_Found.Services
             return con.FindPhones.ToList();
         }
 
-        public FindPhone GetFoundedPhoneOfNumber(string number)
-        {
-            return con.FindPhones.FirstOrDefault(o => o.PhoneNumber == number);
-        }
-        public FindPhone AddFoundedPhone(PhoneDTO phone)
+        public FindPhone AddFoundedPhone(FindPhoneDTO phone)
         {
             if (con.LostPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber) != null)
                 return null;
 
-            using var stream = new MemoryStream();
-            phone.PhonePhoto.CopyTo(stream);
-
-            FindPhone phone1 = mp.Map<FindPhone>(phone);
-            phone1.PhonePhoto = stream.ToArray();
-
+            FindPhone phone1 = new()
+            {
+                PhoneNumber = phone.PhoneNumber,
+                Color = phone.Color,
+                Brand = phone.Brand,
+                Street = phone.Street,
+                Government = phone.Government,
+                Center = phone.Center,
+            };
             con.FindPhones.Add(phone1);
+            con.SaveChanges();
+            return phone1;
+        }
+        public FindPhone UpdateFoundedPhone(FindPhoneDTO phone)
+        {
+            if (con.FindPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber) == null)
+                return null;
+
+            FindPhone phone1 =con.FindPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber);
+
+            phone1.PhoneNumber = phone.PhoneNumber;
+            phone1.Color = phone.Color;
+            phone1.Brand = phone.Brand;
+            phone1.Street = phone.Street;
+            phone1.Center = phone.Center;
+            phone1.Government = phone.Government;
+            
+            con.FindPhones.Update(phone1);
             con.SaveChanges();
             return phone1;
         }

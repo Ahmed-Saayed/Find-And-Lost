@@ -21,29 +21,45 @@ namespace Lost_and_Found.Services
                 return con.FindCards.ToList();
             }
 
-            public FindCard GetFoundedCardOfID(string cardid)
-            {
-                return con.FindCards.FirstOrDefault(o => o.CardID == cardid);
-            }
-            public FindCard AddFoundedCard(CardsDTO card)
+            public FindCard AddFoundedCard(FindCardDTO card)
             {
                 if (con.FindCards.FirstOrDefault(o => o.CardID == card.CardID) != null)
                     return null;
 
-                using var stream = new MemoryStream();
-                card.CardPhoto.CopyTo(stream);
+            FindCard card1 = new()
+            {
+                CardID = card.CardID,
+                Street = card.Street,
+                Government = card.Government,
+                Center = card.Center,
+            };
 
-                var card1 = mp.Map<FindCard>(card);
-
-               card1.CardPhoto = stream.ToArray();
-
-                con.FindCards.Add(card1);
-            con.SaveChanges();
+            con.FindCards.Add(card1);
+                con.SaveChanges();
 
             return card1;
             }
 
-            public string DeleteFoundedCard(string card)
+        public FindCard UpdateFoundedCard(FindCardDTO card)
+        {
+            if (con.FindCards.FirstOrDefault(o => o.CardID == card.CardID) == null)
+                return null;
+
+            FindCard card1 = con.FindCards.FirstOrDefault(o => o.CardID == card.CardID);
+
+            card1.CardID = card.CardID;
+            card1.Street = card.Street;
+            card1.Government = card.Government;
+            card1.Center = card.Center;
+           
+
+            con.FindCards.Update(card1);
+            con.SaveChanges();
+
+            return card1;
+        }
+
+        public string DeleteFoundedCard(string card)
             {
                 if (con.FindCards.FirstOrDefault(o => o.CardID == card) == null)
                     return null;

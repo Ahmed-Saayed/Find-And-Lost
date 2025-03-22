@@ -1,15 +1,82 @@
 [
   {
-    "ContainingType": "Lost_and_Found.Controllers.Lost_PhoneController",
-    "Method": "Post",
-    "RelativePath": "api/Lost_Phone/Add Losted Phone",
+    "ContainingType": "Lost_and_Found.Controllers.AuthController",
+    "Method": "AddManager",
+    "RelativePath": "api/Auth/AddManager",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ID",
-        "Type": "System.Int32",
+        "Name": "EmailManager",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhoneNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CardID",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/Auth/Register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CardID",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
@@ -23,12 +90,403 @@
         "IsRequired": false
       },
       {
-        "Name": "Location",
+        "Name": "CardPhoto",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.Find_CardController",
+    "Method": "Post",
+    "RelativePath": "api/Find_Card/Add find Card",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CardID",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "UserEmail",
+        "Name": "CardPhoto",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Government",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Center",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Street",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.Find_CardController",
+    "Method": "Delete",
+    "RelativePath": "api/Find_Card/Delete find Card",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cardid",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.Find_CardController",
+    "Method": "Get",
+    "RelativePath": "api/Find_Card/Get All Founded Cards",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.Find_CardController",
+    "Method": "Update",
+    "RelativePath": "api/Find_Card/Update Losted Card",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CardID",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CardPhoto",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Government",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Center",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Street",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.Find_PhoneController",
+    "Method": "Post",
+    "RelativePath": "api/Find_Phone/Add find phone",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PhoneNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhonePhoto",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Color",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Brand",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Government",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Center",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Street",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.Find_PhoneController",
+    "Method": "Delete",
+    "RelativePath": "api/Find_Phone/Delete find Card",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "phonenumber",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.Find_PhoneController",
+    "Method": "Get",
+    "RelativePath": "api/Find_Phone/Get All Founded Phones",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.Find_PhoneController",
+    "Method": "Update",
+    "RelativePath": "api/Find_Phone/Update found phone",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PhoneNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhonePhoto",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Color",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Brand",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Government",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Center",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Street",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.Lost_CardController",
+    "Method": "Post",
+    "RelativePath": "api/Lost_Card/Add Losted Card",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CardID",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CardPhoto",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Government",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Center",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Street",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ForiegnKey_UserEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.Lost_CardController",
+    "Method": "Delete",
+    "RelativePath": "api/Lost_Card/Delete Lost Card",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "cardid",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.Lost_CardController",
+    "Method": "Get",
+    "RelativePath": "api/Lost_Card/Get All Losted Cards",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.Lost_CardController",
+    "Method": "Getbyemail",
+    "RelativePath": "api/Lost_Card/Get Losted Cards By Email",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.Lost_CardController",
+    "Method": "Update",
+    "RelativePath": "api/Lost_Card/Update Losted Card",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CardID",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CardPhoto",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Government",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Center",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Street",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ForiegnKey_UserEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.Lost_PhoneController",
+    "Method": "Post",
+    "RelativePath": "api/Lost_Phone/Add Losted Phone",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PhoneNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhonePhoto",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Color",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Brand",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Government",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Center",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Street",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ForiegnKey_UserEmail",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -46,7 +504,7 @@
       {
         "Name": "email",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "phonenum",
@@ -68,7 +526,7 @@
   },
   {
     "ContainingType": "Lost_and_Found.Controllers.Lost_PhoneController",
-    "Method": "Get",
+    "Method": "Getbyemail",
     "RelativePath": "api/Lost_Phone/Get Losted Phones By Email",
     "HttpMethod": "GET",
     "IsController": true,
@@ -77,7 +535,58 @@
       {
         "Name": "email",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_and_Found.Controllers.Lost_PhoneController",
+    "Method": "Update",
+    "RelativePath": "api/Lost_Phone/Update Losted Phone",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PhoneNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhonePhoto",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Color",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Brand",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Government",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Center",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Street",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ForiegnKey_UserEmail",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
