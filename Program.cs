@@ -1,5 +1,6 @@
 using Lost_and_Found.Interfaces;
 using Lost_and_Found.Models;
+using Lost_and_Found.Models.Entites;
 using Lost_and_Found.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -72,13 +73,27 @@ builder.Services.AddSwaggerGen(op =>
     });
 });
 
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var con = scope.ServiceProvider.GetRequiredService<DataConnection>();
+    var ser = scope.ServiceProvider.GetRequiredService<IAuthService>();
+
+    if (!con.Managers.Any())
+        ser.AddManager(new Manager
+        {
+            EmailManager = "Manager1@gmail",
+            Password = "123456789",
+            CardID = "303040",
+            PhoneNumber = "010207143"
+        });
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

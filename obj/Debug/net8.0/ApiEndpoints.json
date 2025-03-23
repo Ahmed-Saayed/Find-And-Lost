@@ -162,7 +162,7 @@
   {
     "ContainingType": "Lost_and_Found.Controllers.Find_CardController",
     "Method": "Update",
-    "RelativePath": "api/Find_Card/Update Losted Card",
+    "RelativePath": "api/Find_Card/Update Find Card",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -244,7 +244,7 @@
   {
     "ContainingType": "Lost_and_Found.Controllers.Find_PhoneController",
     "Method": "Delete",
-    "RelativePath": "api/Find_Phone/Delete find Card",
+    "RelativePath": "api/Find_Phone/Delete find phone",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

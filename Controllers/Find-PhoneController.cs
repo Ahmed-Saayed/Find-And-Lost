@@ -37,7 +37,7 @@ namespace Lost_and_Found.Controllers
             {
                 var findphone = Find_Phonesserver.AddFoundedPhone(findphoneDTO);
                 if (findphone == null)
-                    return BadRequest("Card Number Already Exists");
+                    return BadRequest("Phone Number Already Exists");
 
                 var ret = new FindPhoneDTO
                 {
@@ -73,7 +73,7 @@ namespace Lost_and_Found.Controllers
                 return Ok(ret);
             }
         [Authorize(Roles = "Manager")]
-        [HttpDelete("Delete find Card")]
+        [HttpDelete("Delete find phone")]
             public IActionResult Delete([FromForm] string phonenumber)
             {
                 var ret = Find_Phonesserver.DeleteFoundedPhone(phonenumber);

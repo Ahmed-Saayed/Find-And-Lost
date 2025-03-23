@@ -50,7 +50,7 @@ namespace Lost_and_Found.Controllers
         }
 
         [Authorize(Roles = "Manager")]
-        [HttpPut("Update Losted Card")]
+        [HttpPut("Update Find Card")]
         public IActionResult Update([FromForm] FindCardDTO lostCardDTO)
         {
             var findcard = Find_CardServices.UpdateFoundedCard(lostCardDTO);
