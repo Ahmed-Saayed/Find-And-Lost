@@ -4,6 +4,8 @@
 
 ![Image](https://github.com/user-attachments/assets/8b479c98-2edd-4db6-924d-39eade129a81)
 
+![Image](https://github.com/user-attachments/assets/b83ea5ce-6c44-4123-8d12-324c5cf59f17)
+
 <h2>💥Features</h2>
 <ul>
   <li>🔐JWT authentication system for user registration and login.</li>
