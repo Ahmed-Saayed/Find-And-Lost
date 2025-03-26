@@ -27,6 +27,12 @@
   <li><code>Post /api/Auth/AddManager</code>: Add Managers</li>
 </ul>
 
+<h3>Checking_For_Items</h3>
+<ul>
+  <li><code>Get /api/Checking_For_Items/Get Cards by Email</code>:Get all founded cards that registered in table lost cards of {email}</li>    
+  <li><code>Get /api/Checking_For_Items/Get Phones by Email</code>:Get all founded phones that registered in table lost phone of {email}</li>
+</ul>
+
 <h3>Find_Card</h3>
 <ul>
   <li><code>Get /api/Find_Card/Get All Founded Cards</code>: Get all founded Cards</li>
