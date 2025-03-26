@@ -23,7 +23,10 @@ namespace Lost_and_Found.Controllers
         public IActionResult Get()
         {
             var lost_Cards = lost_CardService.GetLostCards();
-            var ret = mp.Map<List<LostCardsDTO>>(lost_Cards);
+            List<string> ret = [];
+
+            foreach (var i in lost_Cards)
+                ret.Add(i.CardID);
 
             return Ok(ret);
         }
@@ -39,6 +42,7 @@ namespace Lost_and_Found.Controllers
             return Ok(lost_Cards);
         }
 
+        [Authorize]
         [HttpPost("Add Losted Card")]
         public IActionResult Post([FromForm] LostCardsDTO lostCardDTO)
         {
@@ -46,8 +50,7 @@ namespace Lost_and_Found.Controllers
             if (lostcard == null)
                 return BadRequest("Card Number Already Exists");
 
-            var ret = mp.Map<LostCardsDTO>(lostcard);
-            return Ok(ret);
+            return Ok($"Added lost card with id = {lostCardDTO.CardID}");
         }
 
         [Authorize(Roles = "Manager")]
@@ -58,8 +61,7 @@ namespace Lost_and_Found.Controllers
             if (lostcard == null)
                 return BadRequest("Card Number do not Exists");
 
-            var ret = mp.Map<LostCardsDTO>(lostcard);
-            return Ok(ret);
+            return Ok($"Updated lost card with id = {lostCardDTO.CardID}");
         }
 
         [Authorize(Roles = "Manager")]

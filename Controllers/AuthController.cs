@@ -27,10 +27,7 @@ namespace Lost_and_Found.Controllers
             if (res == null)
                 return BadRequest("the person is already exists");
 
-            var mapped=mp.Map<RegisterDTO>(res);
-
-            mapped.Password = request.Password;
-            return Ok(mapped);
+            return Ok($"Added user with email = {request.Email}");
         }
 
         [HttpPost("Login")]
@@ -43,6 +40,7 @@ namespace Lost_and_Found.Controllers
 
             return Ok(res);
         }
+
         [Authorize(Roles = "Manager")]
         [HttpPost("AddManager")]
         public IActionResult AddManager([FromForm]Manager man)

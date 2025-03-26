@@ -26,8 +26,13 @@ namespace Lost_and_Found.Services
                 if (con.FindCards.FirstOrDefault(o => o.CardID == card.CardID) != null)
                     return null;
 
+            using var stream = new MemoryStream();
+            card.CardPhoto?.CopyTo(stream);
+
+
             FindCard card1 = new()
             {
+                CardPhoto = stream.ToArray(),
                 CardID = card.CardID,
                 Street = card.Street,
                 Government = card.Government,
@@ -47,6 +52,10 @@ namespace Lost_and_Found.Services
 
             FindCard card1 = con.FindCards.FirstOrDefault(o => o.CardID == card.CardID);
 
+            using var stream = new MemoryStream();
+            card.CardPhoto?.CopyTo(stream);
+
+            card1.CardPhoto = stream.ToArray();
             card1.CardID = card.CardID;
             card1.Street = card.Street;
             card1.Government = card.Government;

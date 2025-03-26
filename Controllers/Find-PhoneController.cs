@@ -24,11 +24,10 @@ namespace Lost_and_Found.Controllers
             public IActionResult Get()
             {
                 var findedphones = Find_Phonesserver.GetFoundedPhones();
-                List<FindPhoneDTO> ret = new();
-                foreach (var phone in findedphones)
-                    ret.Add(new FindPhoneDTO { PhoneNumber = phone.PhoneNumber, Government = phone.Government
-                        ,Center = phone.Center,Street=phone.Street, Color=phone.Color,Brand=phone.Brand });
-
+            List<string> ret = [];
+            foreach (var phone in findedphones)
+                ret.Add(phone.PhoneNumber);
+            
                 return Ok(ret);
             }
         [Authorize]
@@ -39,18 +38,9 @@ namespace Lost_and_Found.Controllers
                 if (findphone == null)
                     return BadRequest("Phone Number Already Exists");
 
-                var ret = new FindPhoneDTO
-                {
-                    PhoneNumber = findphone.PhoneNumber,
-                    Government = findphone.Government,
-                    Center = findphone.Center,
-                    Street = findphone.Street,
-                    Color = findphone.Color,
-                    Brand = findphone.Brand,
-                };
 
-                return Ok(ret);
-            }
+                return Ok($"Updated find phone {findphoneDTO.PhoneNumber}");
+          }
 
         [Authorize(Roles = "Manager")]
         [HttpPut("Update found phone")]
@@ -60,18 +50,10 @@ namespace Lost_and_Found.Controllers
                 if (findphone == null)
                     return BadRequest("Phone Number do not Exists");
 
-                var ret = new FindPhoneDTO
-                {
-                    PhoneNumber = findphone.PhoneNumber,
-                    Government = findphone.Government,
-                    Center = findphone.Center,
-                    Street = findphone.Street,
-                    Color = findphone.Color,
-                    Brand = findphone.Brand,
-                };
 
-                return Ok(ret);
+                return Ok($"Updated find phone {foundphoneDTO.PhoneNumber}");
             }
+
         [Authorize(Roles = "Manager")]
         [HttpDelete("Delete find phone")]
             public IActionResult Delete([FromForm] string phonenumber)

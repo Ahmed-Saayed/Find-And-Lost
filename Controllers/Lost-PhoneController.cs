@@ -24,9 +24,8 @@ namespace Lost_and_Found.Controllers
         public IActionResult Get()
         {
             var lost_Phones = lost_PhoneService.GetLostPhones();
-            var ret = mp.Map<List<LostPhoneDTO>>(lost_Phones);
 
-            return Ok(ret);
+            return Ok(lost_Phones.Select(o => new {PhoneNumber = o.PhoneNumber} ).ToList());
         }
 
         [Authorize(Roles = "Manager")]
@@ -40,6 +39,7 @@ namespace Lost_and_Found.Controllers
             return Ok(lost_Phones);
         }
 
+        [Authorize]
         [HttpPost("Add Losted Phone")]
         public IActionResult Post([FromForm] LostPhoneDTO lostPhoneDTO)
         {
@@ -47,8 +47,7 @@ namespace Lost_and_Found.Controllers
             if (lostPhone == null)
                 return BadRequest("Phone Number Already Exists");
 
-            var ret=mp.Map<LostPhoneDTO>(lostPhone);
-            return Ok(ret);
+            return Ok($"Added lost phone {lostPhoneDTO.PhoneNumber}");
         }
 
         [Authorize(Roles = "Manager")]
@@ -59,8 +58,7 @@ namespace Lost_and_Found.Controllers
             if (lostPhone == null)
                 return BadRequest("Phone Number do not Exists");
 
-            var ret = mp.Map<LostPhoneDTO>(lostPhone);
-            return Ok(ret);
+            return Ok($"Updated lost phone {lostPhoneDTO.PhoneNumber}");
         }
 
         [Authorize(Roles = "Manager")]

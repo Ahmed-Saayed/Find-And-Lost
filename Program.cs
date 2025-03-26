@@ -16,6 +16,7 @@ builder.Services.AddScoped<ILostPhoneService, LostPhoneService>();
 builder.Services.AddScoped<IFindCardService, FindCardService>();
 builder.Services.AddScoped<IFindPhoneService,FindPhoneService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IChecking_For_Items, Checking_For_Items>();
 builder.Services.AddAutoMapper(typeof(Program));
 
 

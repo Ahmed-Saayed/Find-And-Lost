@@ -8,15 +8,12 @@ namespace Lost_and_Found.Helpers
     {
         public Mapper()
         {
-            CreateMap<LostCard, LostCardsDTO>();
-
-            CreateMap<LostPhone, LostPhoneDTO>();
-            CreateMap<LostCard, FindCardDTO>();
-            CreateMap<User, RegisterDTO>();
-
-
-            /* CreateMap<CardsDTO, LostCard>();
-                 .ForMember(o=>o.CardPhoto,o2 => o2.Ignore());*/
+           //CreateMap<LostCard, LostCardsDTO>();
+           //  CreateMap<LostPhone, LostPhoneDTO>();
+           // CreateMap<LostCard, FindCardDTO>();
+           // CreateMap<User, RegisterDTO>();
+           // CreateMap<CardsDTO, LostCard>();
+           //      .ForMember(o=>o.CardPhoto,o2 => o2.Ignore());
 
             /*CreateMap<PhoneDTO, LostPhone>();
                 .ForMember(o => o.PhonePhoto, o2 => o2.Ignore());*/

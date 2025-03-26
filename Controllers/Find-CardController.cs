@@ -23,10 +23,10 @@ namespace Lost_and_Found.Controllers
         [HttpGet("Get All Founded Cards")]
         public IActionResult Get()
         {
-            var lost_Cards = Find_CardServices.GetFoundedCards();
-            List<FindCardDTO> ret = new();
-            foreach (var card in lost_Cards)
-                ret.Add(new FindCardDTO {CardID =card.CardID,Street = card.Street,Center=card.Center,Government=card.Government});
+            var findcards = Find_CardServices.GetFoundedCards();
+            List<string> ret = [];
+            foreach (var card in findcards)
+                ret.Add(card.CardID);
 
             return Ok(ret);
         }
@@ -38,15 +38,7 @@ namespace Lost_and_Found.Controllers
             if (findcard == null)
                 return BadRequest("Card Number Already Exists");
 
-            var ret = new FindCardDTO
-            {
-                CardID = findcard.CardID,
-                Government  = findcard.Government,
-                Street = findcard.Street,
-                Center = findcard.Center
-            };
-
-            return Ok(ret);
+            return Ok($"Added find card {findCardDTO.CardID}");
         }
 
         [Authorize(Roles = "Manager")]
@@ -57,15 +49,7 @@ namespace Lost_and_Found.Controllers
             if (findcard == null)
                 return BadRequest("Card Number do not Exists");
 
-            var ret = new FindCardDTO
-            {
-                CardID = findcard.CardID,
-                Government = findcard.Government,
-                Street = findcard.Street,
-                Center = findcard.Center
-            };
-
-            return Ok(findcard);
+            return Ok($"Updated find card {lostCardDTO.CardID}");
         }
 
         [Authorize(Roles = "Manager")]

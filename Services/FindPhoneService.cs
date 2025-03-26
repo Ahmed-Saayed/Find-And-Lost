@@ -26,9 +26,14 @@ namespace Lost_and_Found.Services
             if (con.LostPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber) != null)
                 return null;
 
+            using var stream = new MemoryStream();
+            phone.PhonePhoto?.CopyTo(stream);
+
+
             FindPhone phone1 = new()
             {
                 PhoneNumber = phone.PhoneNumber,
+                PhonePhoto = stream.ToArray(),
                 Color = phone.Color,
                 Brand = phone.Brand,
                 Street = phone.Street,
@@ -46,7 +51,12 @@ namespace Lost_and_Found.Services
 
             FindPhone phone1 =con.FindPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber);
 
+            using var stream = new MemoryStream();
+            phone.PhonePhoto?.CopyTo(stream);
+
+
             phone1.PhoneNumber = phone.PhoneNumber;
+            phone1.PhonePhoto = stream.ToArray();
             phone1.Color = phone.Color;
             phone1.Brand = phone.Brand;
             phone1.Street = phone.Street;
