@@ -3,6 +3,7 @@ using Lost_and_Found.Models;
 using Lost_and_Found.Models.Entites;
 using Lost_and_Found.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -10,6 +11,7 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddCors();
 builder.Services.AddDbContext<DataConnection>();
 builder.Services.AddScoped<ILostCardService, LostCardService>();
 builder.Services.AddScoped<ILostPhoneService, LostPhoneService>();
