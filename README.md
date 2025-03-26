@@ -2,7 +2,7 @@
 
 <h3>🎯This project Api is a Find-And-Lost  System API built using ASP.NET Core. The API provides endpoints to manage various entities such as Users,Lost and Find Phones, Lost and Find Personal Cards. It also includes JWT authentication for user registration and login.</h3>
 
-![Image](https://github.com/user-attachments/assets/8b479c98-2edd-4db6-924d-39eade129a81)
+![Image](https://github.com/user-attachments/assets/1202055e-55e6-47a6-91a3-c28d27aadd3c)
 
 ![Image](https://github.com/user-attachments/assets/b83ea5ce-6c44-4123-8d12-324c5cf59f17)
 
