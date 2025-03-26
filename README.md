@@ -2,7 +2,7 @@
 
 <h3>🎯This project Api is a Find-And-Lost  System API built using ASP.NET Core. The API provides endpoints to manage various entities such as Users,Lost and Find Phones, Lost and Find Personal Cards. It also includes JWT authentication for user registration and login.</h3>
 
-![Image](https://github.com/user-attachments/assets/8b479c98-2edd-4db6-924d-39eade129a81)
+![Image](https://github.com/user-attachments/assets/1202055e-55e6-47a6-91a3-c28d27aadd3c)
 
 ![Image](https://github.com/user-attachments/assets/b83ea5ce-6c44-4123-8d12-324c5cf59f17)
 
@@ -18,12 +18,19 @@
 
 <h2>📌Endpoints</h2>
 
+ <h4>Its guaranted that when you run , the app will add initialy manager with email = "Manager1@gmail" , and password = "123456789"</h4>
+ 
 <h3>Auth</h3>
 <ul>
-  <h4>Its guaranted that when you run , the app will add initialy manager with email = "Manager1@gmail" , and password = "123456789"</h4>
   <li><code>Post /api/Auth/Register</code>: register</li>    
   <li><code>Post /api/Auth/Login</code>: login</li>
   <li><code>Post /api/Auth/AddManager</code>: Add Managers</li>
+</ul>
+
+<h3>Checking_For_Items</h3>
+<ul>
+  <li><code>Get /api/Checking_For_Items/Get Cards by Email</code>:Get all founded cards that registered in table lost cards of {email}</li>    
+  <li><code>Get /api/Checking_For_Items/Get Phones by Email</code>:Get all founded phones that registered in table lost phone of {email}</li>
 </ul>
 
 <h3>Find_Card</h3>
