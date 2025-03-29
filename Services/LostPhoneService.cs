@@ -13,7 +13,7 @@ namespace Lost_and_Found.Services
         public LostPhoneService(DataConnection con, IMapper mp)
         {
             this.con = con;
-            this.mp=mp;
+            this.mp = mp;
         }
 
         public List<LostPhone> GetLostPhones()
@@ -35,16 +35,16 @@ namespace Lost_and_Found.Services
 
 
             LostPhone lostphone = new()
-                {
-                    PhoneNumber = lostPhoneDTO.PhoneNumber,
-                    ForiegnKey_UserEmail = lostPhoneDTO.ForiegnKey_UserEmail,
-                    PhonePhoto = stream.ToArray(),
-                    Color = lostPhoneDTO.Color,
-                    Brand = lostPhoneDTO.Brand,
-                    Center = lostPhoneDTO.Center,
-                    Government = lostPhoneDTO.Government,
-                    Street = lostPhoneDTO.Street,
-                };
+            {
+                PhoneNumber = lostPhoneDTO.PhoneNumber,
+                ForiegnKey_UserEmail = lostPhoneDTO.ForiegnKey_UserEmail,
+                PhonePhoto = stream.ToArray(),
+                Color = lostPhoneDTO.Color,
+                Brand = lostPhoneDTO.Brand,
+                Center = lostPhoneDTO.Center,
+                Government = lostPhoneDTO.Government,
+                Street = lostPhoneDTO.Street,
+            };
 
             con.LostPhones.Add(lostphone);
             con.SaveChanges();
@@ -62,7 +62,7 @@ namespace Lost_and_Found.Services
             phone.PhonePhoto?.CopyTo(stream);
 
             phone1.PhoneNumber = phone.PhoneNumber;
-            phone1.PhonePhoto = stream.ToArray(); 
+            phone1.PhonePhoto = stream.ToArray();
             phone1.Color = phone.Color;
             phone1.Brand = phone.Brand;
             phone1.Street = phone.Street;
@@ -74,7 +74,7 @@ namespace Lost_and_Found.Services
             return phone1;
         }
 
-        public string DeleteLostPhone(string email,string phonenum)
+        public string DeleteLostPhone(string email, string phonenum)
         {
             if (con.LostPhones.FirstOrDefault(o => o.ForiegnKey_UserEmail == email) == null
                 || con.LostPhones.FirstOrDefault(o => o.PhoneNumber == phonenum) == null)

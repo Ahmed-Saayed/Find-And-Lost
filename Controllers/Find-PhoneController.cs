@@ -39,7 +39,7 @@ namespace Lost_and_Found.Controllers
                     return BadRequest("Phone Number Already Exists");
 
 
-                return Ok($"Updated find phone {findphoneDTO.PhoneNumber}");
+                return Ok($"Added find phone {findphoneDTO.PhoneNumber}");
           }
 
         [Authorize(Roles = "Manager")]

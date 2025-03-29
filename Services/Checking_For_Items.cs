@@ -11,33 +11,31 @@ namespace Lost_and_Found.Services
         {
             this.con = con;
         }
-        public List<string> All_Card_Of_Email(string email)
+        public async Task<List<string>> All_Card_Of_Email(string email)
         {
-            List<string> lst = con.LostCards.Where(o => o.ForiegnKey_UserEmail == email).Select(o => o.CardID).ToList();
+            List<string> lst = await con.LostCards.Where(o => o.ForiegnKey_UserEmail == email).Select(o => o.CardID).ToListAsync();
 
             List<string> ret = [];
             foreach (var item in lst)
-                if (con.FindCards.Any(o => o.CardID == item))
+                if ( await con.FindCards.AnyAsync(o => o.CardID == item))
                 {
                     ret.Add(item);
-                    con.LostCards.Remove(con.LostCards.FirstOrDefault(o => o.CardID == item));
-                    con.SaveChanges();
+                   
                 }
 
             return ret;
         }
 
-        public List<string> All_Phone_Of_Email(string email)
+        public async Task<List<string>> All_Phone_Of_Email(string email)
         {
-            List<string> lst = con.LostPhones.Where(o => o.ForiegnKey_UserEmail == email).Select(o => o.PhoneNumber).ToList();
+            List<string> lst = await con.LostPhones.Where(o => o.ForiegnKey_UserEmail == email).Select(o => o.PhoneNumber).ToListAsync();
 
             List<string> ret = [];
             foreach (var item in lst)
-                if (con.FindPhones.Any(o => o.PhoneNumber == item))
+                if (await con.FindPhones.AnyAsync(o => o.PhoneNumber == item))
                 {
                     ret.Add(item);
-                    con.LostPhones.Remove(con.LostPhones.FirstOrDefault(o => o.PhoneNumber == item));
-                    con.SaveChanges();
+                   
                 }
 
             return ret;

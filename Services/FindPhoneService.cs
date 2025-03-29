@@ -23,7 +23,7 @@ namespace Lost_and_Found.Services
 
         public FindPhone AddFoundedPhone(FindPhoneDTO phone)
         {
-            if (con.LostPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber) != null)
+            if (con.FindPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber) != null)
                 return null;
 
             using var stream = new MemoryStream();

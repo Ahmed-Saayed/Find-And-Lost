@@ -25,12 +25,12 @@ namespace Lost_and_Found.Controllers
         {
             var lost_Phones = lost_PhoneService.GetLostPhones();
 
-            return Ok(lost_Phones.Select(o => new {PhoneNumber = o.PhoneNumber} ).ToList());
+            return Ok(lost_Phones.Select(o => new { PhoneNumber = o.PhoneNumber }).ToList());
         }
 
         [Authorize(Roles = "Manager")]
         [HttpGet("Get Losted Phones By Email")]
-        public IActionResult Getbyemail([FromQuery]string email)
+        public IActionResult Getbyemail([FromQuery] string email)
         {
             var lost_Phones = lost_PhoneService.GetLostPhonesOfID(email);
             if (lost_Phones == null)
@@ -63,7 +63,7 @@ namespace Lost_and_Found.Controllers
 
         [Authorize(Roles = "Manager")]
         [HttpDelete("Delete Lost Phone")]
-        public IActionResult Delete([FromForm] string email,[FromForm]string phonenum)
+        public IActionResult Delete([FromForm] string email, [FromForm] string phonenum)
         {
             var ret = lost_PhoneService.DeleteLostPhone(email, phonenum);
             if (ret == null)
