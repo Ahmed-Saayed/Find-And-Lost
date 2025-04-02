@@ -89,7 +89,7 @@ Manager has access to any thing ,Users just has access to register and login in 
 <hr>
 <h2>🌹How to Run the Project</h2>
 <ol>
-  <li>Clone this repository to your local machine.</li>
+  <li>Clone this repository to your local machine.  <code>https://github.com/Ahmed-Saayed/Find-And-Lost.git</code></li>
   <li>Open the project in your preferred IDE.</li>
   <li>Add migration <code>Add-Migration init</code></li>
   <li>Update Data base <code>Update-Database</code></li>
