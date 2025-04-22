@@ -11,7 +11,7 @@ namespace Lost_and_Found.Services
         {
             this.con = con;
         }
-        public async Task<List<string>> All_Card_Of_Email(string email)
+        public async Task<List<string>> All_Items(string email)
         {
             List<string> lst = await con.LostCards.Where(o => o.ForiegnKey_UserEmail == email).Select(o => o.CardID).ToListAsync();
 
@@ -19,27 +19,19 @@ namespace Lost_and_Found.Services
             foreach (var item in lst)
                 if ( await con.FindCards.AnyAsync(o => o.CardID == item))
                 {
-                    ret.Add(item);
+                    ret.Add("found Card with ID = " + item);
                    
                 }
 
-            return ret;
-        }
+            List<string> lst2 = await con.LostPhones.Where(o => o.ForiegnKey_UserEmail == email).Select(o => o.PhoneNumber).ToListAsync();
 
-        public async Task<List<string>> All_Phone_Of_Email(string email)
-        {
-            List<string> lst = await con.LostPhones.Where(o => o.ForiegnKey_UserEmail == email).Select(o => o.PhoneNumber).ToListAsync();
-
-            List<string> ret = [];
-            foreach (var item in lst)
+            foreach (var item in lst2)
                 if (await con.FindPhones.AnyAsync(o => o.PhoneNumber == item))
                 {
-                    ret.Add(item);
-                   
+                    ret.Add("found Phone with ID = " + item);
                 }
 
             return ret;
         }
-
     }
 }

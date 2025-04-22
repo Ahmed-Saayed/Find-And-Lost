@@ -16,17 +16,10 @@ namespace Lost_and_Found.Controllers
         }
 
         [Authorize]
-        [HttpGet("Get Cards by Email")]
+        [HttpGet("Get all items")]
         public async Task<IActionResult> GetCards([FromQuery] string email)
         {
-            return Ok(await checking_For_Items.All_Card_Of_Email(email));
-        }
-
-        [Authorize]
-        [HttpGet("Get Phones by Email")]
-        public async Task<IActionResult> GetPhones([FromQuery] string email)
-        {
-            return Ok(await checking_For_Items.All_Phone_Of_Email(email));
+            return Ok(await checking_For_Items.All_Items(email));
         }
     }
 }

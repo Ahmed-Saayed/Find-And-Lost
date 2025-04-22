@@ -100,23 +100,7 @@
   {
     "ContainingType": "Lost_and_Found.Controllers.Checking_For_ItemsController",
     "Method": "GetCards",
-    "RelativePath": "api/Checking_For_Items/Get Cards by Email",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Lost_and_Found.Controllers.Checking_For_ItemsController",
-    "Method": "GetPhones",
-    "RelativePath": "api/Checking_For_Items/Get Phones by Email",
+    "RelativePath": "api/Checking_For_Items/Get all items",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
