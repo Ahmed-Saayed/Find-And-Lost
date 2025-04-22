@@ -1,10 +1,10 @@
 # Find-And-Lost
 
-<h3>🎯This project Api is a Find-And-Lost  System API built using ASP.NET Core. The API provides endpoints to manage various entities such as Users,Lost and Find Phones, Lost and Find Personal Cards. It also includes JWT authentication for user registration and login.</h3>
+<h3>🎯This project Api is a Find-And-Lost  System API built using ASP.NET Core. The API provides endpoints to manage various entities such as Users,Lost and Find Phones, Lost and Find Personal Cards. It also includes JWT authentication for user registration and login with Rule-Based authorization.</h3>
 
 <hr>
 
-![Image](https://github.com/user-attachments/assets/1202055e-55e6-47a6-91a3-c28d27aadd3c)
+![Image](https://github.com/user-attachments/assets/1ef9bcb6-c8e6-4e91-bae4-1468c34d73a1)
 
 <hr>
 
@@ -31,8 +31,7 @@
 
 <h3>Checking_For_Items</h3>
 <ul>
-  <li><code>Get /api/Checking_For_Items/Get Cards by Email</code>:Get all founded cards that registered in table lost cards of {email}</li>    
-  <li><code>Get /api/Checking_For_Items/Get Phones by Email</code>:Get all founded phones that registered in table lost phone of {email}</li>
+  <li><code>Get /api/Checking_For_Items/Get all items</code>:Get all founded items {email}</li>    
 </ul>
 
 <h3>Find_Card</h3>
@@ -89,7 +88,7 @@ Manager has access to any thing ,Users just has access to register and login in 
 <hr>
 <h2>🌹How to Run the Project</h2>
 <ol>
-  <li>Clone this repository to your local machine.</li>
+  <li>Clone this repository to your local machine.  <code>https://github.com/Ahmed-Saayed/Find-And-Lost.git</code></li>
   <li>Open the project in your preferred IDE.</li>
   <li>Add migration <code>Add-Migration init</code></li>
   <li>Update Data base <code>Update-Database</code></li>
