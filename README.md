@@ -4,7 +4,7 @@
 
 <hr>
 
-![Image](https://github.com/user-attachments/assets/1202055e-55e6-47a6-91a3-c28d27aadd3c)
+![Image](https://github.com/user-attachments/assets/1ef9bcb6-c8e6-4e91-bae4-1468c34d73a1)
 
 <hr>
 
@@ -31,8 +31,7 @@
 
 <h3>Checking_For_Items</h3>
 <ul>
-  <li><code>Get /api/Checking_For_Items/Get Cards by Email</code>:Get all founded cards that registered in table lost cards of {email}</li>    
-  <li><code>Get /api/Checking_For_Items/Get Phones by Email</code>:Get all founded phones that registered in table lost phone of {email}</li>
+  <li><code>Get /api/Checking_For_Items/Get all items</code>:Get all founded items {email}</li>    
 </ul>
 
 <h3>Find_Card</h3>
