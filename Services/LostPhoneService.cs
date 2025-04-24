@@ -27,7 +27,8 @@ namespace Lost_and_Found.Services
         }
         public LostPhone AddLostPhone(LostPhoneDTO lostPhoneDTO)
         {
-            if (con.LostPhones.FirstOrDefault(o => o.PhoneNumber == lostPhoneDTO.PhoneNumber) != null)
+            if (con.LostPhones.FirstOrDefault(o => o.PhoneNumber == lostPhoneDTO.PhoneNumber) != null
+                || con.Users.FirstOrDefault(o => o.Email == lostPhoneDTO.ForiegnKey_UserEmail) == null)
                 return null;
 
             using var stream = new MemoryStream();
@@ -53,7 +54,8 @@ namespace Lost_and_Found.Services
         }
         public LostPhone UpdateLostPhone(LostPhoneDTO phone)
         {
-            if (con.LostPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber) == null)
+            if (con.LostPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber) == null
+                || con.Users.FirstOrDefault(o => o.Email == phone.ForiegnKey_UserEmail) == null)
                 return null;
 
             LostPhone phone1 = con.LostPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber);

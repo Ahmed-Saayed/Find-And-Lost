@@ -48,7 +48,7 @@ namespace Lost_and_Found.Controllers
         {
             var lostcard = lost_CardService.AddLostCard(lostCardDTO);
             if (lostcard == null)
-                return BadRequest("Card Number Already Exists");
+                return BadRequest("Card Number Already Exists or invalid email");
 
             return Ok($"Added lost card with id = {lostCardDTO.CardID}");
         }
@@ -59,7 +59,7 @@ namespace Lost_and_Found.Controllers
         {
             var lostcard = lost_CardService.UpdateLostCard(lostCardDTO);
             if (lostcard == null)
-                return BadRequest("Card Number do not Exists");
+                return BadRequest("Card Number or email do not Exists");
 
             return Ok($"Updated lost card with id = {lostCardDTO.CardID}");
         }

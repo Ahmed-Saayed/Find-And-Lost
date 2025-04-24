@@ -45,7 +45,7 @@ namespace Lost_and_Found.Controllers
         {
             var lostPhone = lost_PhoneService.AddLostPhone(lostPhoneDTO);
             if (lostPhone == null)
-                return BadRequest("Phone Number Already Exists");
+                return BadRequest("Phone Number Already Exists or invalid email");
 
             return Ok($"Added lost phone {lostPhoneDTO.PhoneNumber}");
         }
@@ -56,7 +56,7 @@ namespace Lost_and_Found.Controllers
         {
             var lostPhone = lost_PhoneService.UpdateLostPhone(lostPhoneDTO);
             if (lostPhone == null)
-                return BadRequest("Phone Number do not Exists");
+                return BadRequest("Phone Number or email do not Exists");
 
             return Ok($"Updated lost phone {lostPhoneDTO.PhoneNumber}");
         }

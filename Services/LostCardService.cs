@@ -27,7 +27,8 @@ namespace Lost_and_Found.Services
         }
         public LostCard AddLostCard(LostCardsDTO lostCardDTO)
         {
-            if (con.LostCards.FirstOrDefault(o => o.CardID == lostCardDTO.CardID) != null)
+            if (con.LostCards.FirstOrDefault(o => o.CardID == lostCardDTO.CardID) != null
+                || con.Users.FirstOrDefault(o => o.Email == lostCardDTO.ForiegnKey_UserEmail) == null)
                 return null;
 
             using var stream = new MemoryStream();
@@ -52,7 +53,8 @@ namespace Lost_and_Found.Services
 
         public LostCard UpdateLostCard(LostCardsDTO card)
         {
-            if (con.LostCards.FirstOrDefault(o => o.CardID == card.CardID) == null)
+            if (con.LostCards.FirstOrDefault(o => o.CardID == card.CardID) == null
+                || con.Users.FirstOrDefault(o => o.Email == card.ForiegnKey_UserEmail) == null)
                 return null;
 
             LostCard card1 = con.LostCards.FirstOrDefault(o => o.CardID == card.CardID);
