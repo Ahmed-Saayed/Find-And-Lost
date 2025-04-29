@@ -7,7 +7,7 @@ namespace Lost_and_Found.Interfaces
     {
         public User Register(RegisterDTO reg);
         public Manager AddManager(Manager man);
-        public string Login(LoginDTO log);
+        public object Login(LoginDTO log);
         public string CreateToken(LoginDTO log);
         public string GetTypeOfUser(string email);
     }

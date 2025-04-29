@@ -56,6 +56,7 @@ namespace Lost_and_Found.Services
                     signingCredentials: creds
                     );
 
+            
             return new JwtSecurityTokenHandler().WriteToken(tokendescription);
         }
 
@@ -87,7 +88,7 @@ namespace Lost_and_Found.Services
             return user;
         }
 
-        public string Login(LoginDTO request)
+        public object Login(LoginDTO request)
         {
 
             if (GetTypeOfUser(request.Email) == "Invalid")
@@ -98,7 +99,7 @@ namespace Lost_and_Found.Services
              .VerifyHashedPassword(user, user.HashedPassword, request.Password) == PasswordVerificationResult.Failed)
                 return null;
 
-            return "Hello you are logged in and this is your token  " + CreateToken(request);
+            return new { Token = CreateToken(request), Type = GetTypeOfUser(request.Email) };
         }
 
         public Manager AddManager(Manager man)
