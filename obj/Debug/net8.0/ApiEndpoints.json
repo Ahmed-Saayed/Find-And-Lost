@@ -399,11 +399,6 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
         "Name": "cardid",
         "Type": "System.String",
         "IsRequired": false
@@ -537,11 +532,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
       {
         "Name": "phonenum",
         "Type": "System.String",

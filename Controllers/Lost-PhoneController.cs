@@ -63,9 +63,9 @@ namespace Lost_and_Found.Controllers
 
         [Authorize(Roles = "Manager")]
         [HttpDelete("Delete Lost Phone")]
-        public IActionResult Delete([FromForm] string email, [FromForm] string phonenum)
+        public IActionResult Delete( [FromForm] string phonenum)
         {
-            var ret = lost_PhoneService.DeleteLostPhone(email, phonenum);
+            var ret = lost_PhoneService.DeleteLostPhone(phonenum);
             if (ret == null)
                 return BadRequest("Phone Number or Email Not Found");
 

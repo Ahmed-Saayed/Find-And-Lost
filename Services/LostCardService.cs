@@ -75,10 +75,9 @@ namespace Lost_and_Found.Services
             return card1;
         }
 
-        public string DeleteLostCard(string email, string cardid)
+        public string DeleteLostCard(string cardid)
         {
-            if (con.LostCards.FirstOrDefault(o => o.ForiegnKey_UserEmail == email) == null
-                || con.LostCards.FirstOrDefault(o => o.CardID == cardid) == null)
+            if (con.LostCards.FirstOrDefault(o => o.CardID == cardid) == null)
                 return null;
 
             con.LostCards.Remove(con.LostCards.FirstOrDefault(o => o.CardID == cardid));

@@ -76,10 +76,9 @@ namespace Lost_and_Found.Services
             return phone1;
         }
 
-        public string DeleteLostPhone(string email, string phonenum)
+        public string DeleteLostPhone(string phonenum)
         {
-            if (con.LostPhones.FirstOrDefault(o => o.ForiegnKey_UserEmail == email) == null
-                || con.LostPhones.FirstOrDefault(o => o.PhoneNumber == phonenum) == null)
+            if (con.LostPhones.FirstOrDefault(o => o.PhoneNumber == phonenum) == null)
                 return null;
 
             con.LostPhones.Remove(con.LostPhones.FirstOrDefault(o => o.PhoneNumber == phonenum));

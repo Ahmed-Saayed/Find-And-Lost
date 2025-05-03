@@ -9,6 +9,6 @@ namespace Lost_and_Found.Interfaces
         List<string> GetLostPhonesOfEmail(string email);
         public LostCard AddLostCard(LostCardsDTO lostCard);
         LostCard UpdateLostCard(LostCardsDTO card);
-        public string DeleteLostCard(string email, string CardID);
+        public string DeleteLostCard( string CardID);
     }
 }

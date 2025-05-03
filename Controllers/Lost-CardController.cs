@@ -66,9 +66,9 @@ namespace Lost_and_Found.Controllers
 
         [Authorize(Roles = "Manager")]
         [HttpDelete("Delete Lost Card")]
-        public IActionResult Delete([FromForm] string email, [FromForm] string cardid)
+        public IActionResult Delete([FromForm] string cardid)
         {
-            var ret = lost_CardService.DeleteLostCard(email, cardid);
+            var ret = lost_CardService.DeleteLostCard( cardid);
             if (ret == null)
                 return BadRequest("Card Number or Email Not Found");
 
