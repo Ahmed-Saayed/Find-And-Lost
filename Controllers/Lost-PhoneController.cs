@@ -30,7 +30,7 @@ namespace Lost_and_Found.Controllers
 
         [Authorize(Roles = "Manager")]
         [HttpGet("Get Losted Phones By Email")]
-        public IActionResult Getbyemail([FromQuery] string email)
+        public IActionResult Getbyemail([FromForm] string email)
         {
             var lost_Phones = lost_PhoneService.GetLostPhonesOfID(email);
             if (lost_Phones == null)

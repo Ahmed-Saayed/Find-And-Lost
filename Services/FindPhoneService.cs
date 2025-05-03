@@ -23,7 +23,8 @@ namespace Lost_and_Found.Services
 
         public FindPhone AddFoundedPhone(FindPhoneDTO phone)
         {
-            if (con.FindPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber) != null)
+            if (con.FindPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber) != null
+                || con.Users.FirstOrDefault(o => o.Email == phone.FinderEmail) == null)
                 return null;
 
             using var stream = new MemoryStream();
@@ -39,6 +40,7 @@ namespace Lost_and_Found.Services
                 Street = phone.Street,
                 Government = phone.Government,
                 Center = phone.Center,
+                FinderEmail = phone.FinderEmail
             };
             con.FindPhones.Add(phone1);
             con.SaveChanges();
@@ -46,7 +48,8 @@ namespace Lost_and_Found.Services
         }
         public FindPhone UpdateFoundedPhone(FindPhoneDTO phone)
         {
-            if (con.FindPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber) == null)
+            if (con.FindPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber) == null
+                || con.Users.FirstOrDefault(o => o.Email == phone.FinderEmail) == null)
                 return null;
 
             FindPhone phone1 =con.FindPhones.FirstOrDefault(o => o.PhoneNumber == phone.PhoneNumber);
@@ -61,6 +64,7 @@ namespace Lost_and_Found.Services
             phone1.Brand = phone.Brand;
             phone1.Street = phone.Street;
             phone1.Center = phone.Center;
+            phone1.FinderEmail = phone.FinderEmail;
             phone1.Government = phone.Government;
             
             con.FindPhones.Update(phone1);

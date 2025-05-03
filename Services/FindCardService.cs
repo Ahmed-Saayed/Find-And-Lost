@@ -23,7 +23,8 @@ namespace Lost_and_Found.Services
 
             public FindCard AddFoundedCard(FindCardDTO card)
             {
-                if (con.FindCards.FirstOrDefault(o => o.CardID == card.CardID) != null)
+                if (con.FindCards.FirstOrDefault(o => o.CardID == card.CardID) != null
+                || con.Users.FirstOrDefault(o => o.Email == card.FinderEmail) == null)
                     return null;
 
             using var stream = new MemoryStream();
@@ -37,6 +38,7 @@ namespace Lost_and_Found.Services
                 Street = card.Street,
                 Government = card.Government,
                 Center = card.Center,
+                FinderEmail = card.FinderEmail
             };
 
             con.FindCards.Add(card1);
@@ -47,7 +49,8 @@ namespace Lost_and_Found.Services
 
         public FindCard UpdateFoundedCard(FindCardDTO card)
         {
-            if (con.FindCards.FirstOrDefault(o => o.CardID == card.CardID) == null)
+            if (con.FindCards.FirstOrDefault(o => o.CardID == card.CardID) == null 
+                || con.Users.FirstOrDefault(o => o.Email == card.FinderEmail) == null)
                 return null;
 
             FindCard card1 = con.FindCards.FirstOrDefault(o => o.CardID == card.CardID);
@@ -60,6 +63,7 @@ namespace Lost_and_Found.Services
             card1.Street = card.Street;
             card1.Government = card.Government;
             card1.Center = card.Center;
+            card1.FinderEmail = card.FinderEmail;
            
 
             con.FindCards.Update(card1);

@@ -145,6 +145,11 @@
         "Name": "Street",
         "Type": "System.String",
         "IsRequired": false
+      },
+      {
+        "Name": "FinderEmail",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -207,6 +212,11 @@
         "Name": "Street",
         "Type": "System.String",
         "IsRequired": false
+      },
+      {
+        "Name": "FinderEmail",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -251,6 +261,11 @@
       },
       {
         "Name": "Street",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FinderEmail",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -323,6 +338,11 @@
       },
       {
         "Name": "Street",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FinderEmail",
         "Type": "System.String",
         "IsRequired": false
       }

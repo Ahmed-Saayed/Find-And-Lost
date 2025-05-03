@@ -9,5 +9,6 @@
         public string Government { get; set; }
         public string Center { get; set; }
         public string Street { get; set; }
+        public string FinderEmail { get; set; }
     }
 }
