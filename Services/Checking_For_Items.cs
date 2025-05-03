@@ -24,7 +24,7 @@ namespace Lost_and_Found.Services
                 {
                     ret.Add(new
                     {
-                        Card = item.CardID,
+                        Found_Card = item.CardID,
                         Founder_Email = con.FindCards.FirstOrDefault(o => o.CardID == item.CardID)?.FinderEmail
                     });  
                 }
@@ -36,7 +36,7 @@ namespace Lost_and_Found.Services
                 {
                     ret.Add(new
                     {
-                        Phone = item.PhoneNumber,
+                        Found_Phone = item.PhoneNumber,
                         Founder_Email = con.FindPhones.FirstOrDefault(o => o.PhoneNumber == item.PhoneNumber)?.FinderEmail
                     });
                     
