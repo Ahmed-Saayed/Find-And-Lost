@@ -2,6 +2,8 @@
 using Lost_and_Found.Models;
 using Lost_and_Found.Models.Entites;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.Metrics;
+using System.Text.Json;
 
 namespace Lost_and_Found.Services
 {
@@ -12,16 +14,19 @@ namespace Lost_and_Found.Services
         {
             this.con = con;
         }
-        public async Task<List<string>> All_Items(string email)
+        public async Task<object> All_Items(string email)
         {
             List<LostCard> lst = await con.LostCards.Where(o => o.ForiegnKey_UserEmail == email).ToListAsync();
 
-            List<string> ret = [];
+            List<object> ret = [];
             foreach (var item in lst)
                 if ( await con.FindCards.AnyAsync(o => o.CardID == item.CardID))
                 {
-                    ret.Add("found Card with ID = " + item.CardID + " === Email of the finder = "
-                        + con.FindCards.FirstOrDefault(o => o.CardID == item.CardID).FinderEmail);  
+                    ret.Add(new
+                    {
+                        Card = item.CardID,
+                        Founder_Email = con.FindCards.FirstOrDefault(o => o.CardID == item.CardID)?.FinderEmail
+                    });  
                 }
 
             List<LostPhone> lst2 = await con.LostPhones.Where(o => o.ForiegnKey_UserEmail == email).ToListAsync();
@@ -29,8 +34,12 @@ namespace Lost_and_Found.Services
             foreach (var item in lst2)
                 if (await con.FindPhones.AnyAsync(o => o.PhoneNumber == item.PhoneNumber))
                 {
-                    ret.Add("found Phone with ID = " + item.PhoneNumber + " === Email of the finder = " 
-                        +  con.FindPhones.FirstOrDefault(o => o.PhoneNumber == item.PhoneNumber).FinderEmail);
+                    ret.Add(new
+                    {
+                        Phone = item.PhoneNumber,
+                        Founder_Email = con.FindPhones.FirstOrDefault(o => o.PhoneNumber == item.PhoneNumber)?.FinderEmail
+                    });
+                    
                 }
 
             return  ret;

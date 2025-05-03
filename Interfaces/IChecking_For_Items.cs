@@ -2,6 +2,6 @@
 {
     public interface IChecking_For_Items
     {
-        public Task<List<string>> All_Items(string email);
+        public Task<object> All_Items(string email);
     }
 }
